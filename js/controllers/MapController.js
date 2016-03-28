@@ -22,11 +22,12 @@
             map.name            = 'UNMSM';
             map.type            = 'imageOverlay';
 
-            map.center          = {lat:-12.063189600000001, lng:-77.0999219};
+            //map.center          = {lat:-12.063189600000001, lng:-77.0999219};
+            map.center          = {lat:-12.058333, lng:-77.083333};
 
             map.markers         = {};
             map.cnt             = 0;
-            map.scale           = 55000*100;
+            map.scale           = 55000*1;
 			activate();
 
 
@@ -90,8 +91,8 @@
                 }
 
                 markers["center"] = {
-                    lat: map.center.lat,
-                    lng: map.center.lng,
+                    lat: map.center.lng,
+                    lng: map.center.lat,
                 };
 
                 return markers;
@@ -100,8 +101,8 @@
             function fixPosition(data) {
                 var lat = (map.center.lat - data.latitude)*map.scale;
                 var lng = (map.center.lat - data.latitude)*map.scale;
-                console.log({lat: lat, lng: lng});
-                return {lat: lat, lng: lng, icon: {iconUrl: 'img/camion.jpg'}};
+                console.log({lat: lng, lng: lat});
+                return {lat: lng, lng: lat, icon: {iconUrl: 'img/camion.jpg'}};
             }
 
             function updateMarkers(){
