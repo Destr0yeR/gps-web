@@ -28,8 +28,8 @@
             map.markers         = {};
             map.cnt             = 0;
 
-            map.scale_lat       = 100000*2.2;
-            map.scale_lng       = 100000*1.1;
+            map.scale_lat       = 100000*1.1;
+            map.scale_lng       = 100000*0.77;
             map.refresh         = 1000 * 1;
 
 			activate();
