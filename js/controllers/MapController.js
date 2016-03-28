@@ -23,17 +23,21 @@
             map.type            = 'imageOverlay';
 
             //map.center          = {lat:-12.063189600000001, lng:-77.0999219};
-            map.center          = {lat:-12.058333, lng:-77.083333};
+            map.center          = {lat:-12.0564791, lng:-77.0828385};
 
             map.markers         = {};
             map.cnt             = 0;
-            map.scale           = 55000*1;
+
+            map.scale_lat       = 100000*2.2;
+            map.scale_lng       = 100000*1.1;
+            map.refresh         = 1000 * 1;
+
 			activate();
 
 
 			function activate(){
 				map.initMap();
-                $interval(map.updateMarkers, 1000);
+                $interval(map.updateMarkers, map.refresh);
 			}
 
 			function initMap(){
@@ -99,10 +103,10 @@
             }
 
             function fixPosition(data) {
-                var lat = (map.center.lat - data.latitude)*map.scale;
-                var lng = (map.center.lat - data.latitude)*map.scale;
-                console.log({lat: lng, lng: lat});
-                return {lat: lng, lng: lat, icon: {iconUrl: 'img/camion.jpg'}};
+                var lng = (data.latitude -  map.center.lat) * map.scale_lat;
+                var lat = (map.center.lng - data.longitude) * map.scale_lng;
+                console.log({lat: lat, lng: lng});
+                return {lat: lat, lng: lng, icon: {iconUrl: 'img/camion.jpg'}};
             }
 
             function updateMarkers(){
